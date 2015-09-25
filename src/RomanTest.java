@@ -15,6 +15,10 @@ public class RomanTest {
         roman = new Roman();
         assertEquals("I", roman.getRoman(1));
     }
+    public void getRomanOf2ShouldReturnStringII() {
+        roman = new Roman();
+        assertEquals("II", roman.getRoman(2));
+    }
 }
 
 
