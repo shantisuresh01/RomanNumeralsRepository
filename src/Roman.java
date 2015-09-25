@@ -4,8 +4,12 @@ public class Roman {
 
     public String getRoman(int arabic) {
         String output = "";
-	 while(arabic > 0) {
- 	    arabic -= 1;
+         while(arabic >= 5) {
+            arabic -= 5 ;
+            output += "V";
+        }
+	 while(arabic >= 1) {
+ 	    arabic-- ;
 	    output += "I";
         }
         return(output);

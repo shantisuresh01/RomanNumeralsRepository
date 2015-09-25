@@ -15,13 +15,20 @@ public class RomanTest {
         roman = new Roman();
         assertEquals("I", roman.getRoman(1));
     }
+    @Test
     public void getRomanOf2ShouldReturnStringII() {
         roman = new Roman();
         assertEquals("II", roman.getRoman(2));
     }
+    @Test
     public void getRomanOf3ShouldReturnStringIII() {
         roman = new Roman();
         assertEquals("III", roman.getRoman(3));
+    }
+    @Test
+    public void getRomanOf5ShouldReturnStringV() {
+        roman = new Roman();
+        assertEquals("V", roman.getRoman(5));
     }
 }
 
