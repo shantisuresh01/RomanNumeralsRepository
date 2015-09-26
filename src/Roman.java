@@ -1,7 +1,7 @@
 public class Roman {
     private int arabic;
     private String numeral;
-    private char[] romanSymbols = new char[] {'I', 'V', 'X', 'L', 'C', 'D', 'M' };
+    private char[] romanSymbols = new char[] {'I', 'V', 'X', 'L', 'C', 'D', 'M', 'M', 'M'};
     {
         numeral = "";
     }
