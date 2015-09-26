@@ -45,6 +45,11 @@ public class RomanTest {
         roman = new Roman();
         assertEquals("XII", roman.getRoman(12));
     }
+    @Test
+    public void getRomanOf16ShouldReturnStringXVI() {
+        roman = new Roman();
+        assertEquals("XVI", roman.getRoman(16));
+    }
 }
 
 
