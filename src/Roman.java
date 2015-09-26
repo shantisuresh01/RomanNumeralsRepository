@@ -21,7 +21,7 @@ public class Roman {
             int arabicDigit =  arabic / powerOfTen;
             arabic = arabic - (arabicDigit * powerOfTen);
 
-            // find the indices for the one and five symbols - fiveIndex = (n*2) -1 
+            // find the indices for the one, five and ten symbols - fiveIndex = (n*2) -1 
             int fiveIndex = (numOfDigits * 2 ) -1;
             int tenIndex = fiveIndex + 1;
             int oneIndex = fiveIndex - 1;
