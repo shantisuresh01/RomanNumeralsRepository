@@ -60,22 +60,6 @@ public class Roman {
         }
     }
 
-    public String getRomanOld(int arabic) {
-        String output = "";
-         while(arabic >= 10) {
-            arabic -= 10 ;
-            output += "X";
-        }
-         while(arabic >= 5) {
-            arabic -= 5 ;
-            output += "V";
-        }
-	 while(arabic >= 1) {
- 	    arabic-- ;
-	    output += "I";
-        }
-        return(output);
-    }
     public static void main(String[] args) {
         // Find the number of digits in a number:
         int i = 10;
