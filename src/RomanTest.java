@@ -60,6 +60,11 @@ public class RomanTest {
         roman = new Roman();
         assertEquals("XIX", roman.getRoman(19));
     }
+    @Test
+    public void getRomanOf100ShouldReturnStringC() {
+        roman = new Roman();
+        assertEquals("C", roman.getRoman(100));
+    }
 }
 
 
