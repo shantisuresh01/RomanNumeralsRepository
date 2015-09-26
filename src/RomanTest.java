@@ -80,6 +80,11 @@ public class RomanTest {
         roman = new Roman();
         assertEquals("MCMXCIX", roman.getRoman(1999));
     }
+    @Test
+    public void getRomanOf55ShouldReturnStringLV() {
+        roman = new Roman();
+        assertEquals("LV", roman.getRoman(55));
+    }
 }
 
 
