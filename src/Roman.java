@@ -33,7 +33,7 @@ public class Roman {
         
     }
     private void computeRomanDigit(int arabicDigit, char oneSymbol, char fiveSymbol){
-        System.out.println("computeRoman: " + arabicDigit + " " + oneSymbol + " " + fiveSymbol);
+
         if(arabicDigit >= 1 && arabicDigit <=3 ) {
             while(arabicDigit > 0) {
                 arabicDigit-- ;
