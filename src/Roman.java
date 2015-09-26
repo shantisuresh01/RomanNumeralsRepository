@@ -1,15 +1,12 @@
 public class Roman {
-    private int arabic;
     private String numeral;
-    private char[] romanSymbols = new char[] {'I', 'V', 'X', 'L', 'C', 'D', 'M', 'M', 'M'};
+    private char[] romanSymbols;
     {
+       // instance initialization block
         numeral = "";
+        romanSymbols = new char[] {'I', 'V', 'X', 'L', 'C', 'D', 'M', 'M', 'M'};
     }
-/*
-    public Roman(int arabic) {
-        this.arabic = arabic;
-    }
-*/
+
     public String getRoman(int arabic) {
 
         // Find the number of digits in the arabic number:
