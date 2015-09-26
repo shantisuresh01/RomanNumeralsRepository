@@ -30,6 +30,11 @@ public class RomanTest {
         roman = new Roman();
         assertEquals("V", roman.getRoman(5));
     }
+    @Test
+    public void getRomanOf10ShouldReturnStringX() {
+        roman = new Roman();
+        assertEquals("X", roman.getRoman(10));
+    }
 }
 
 
