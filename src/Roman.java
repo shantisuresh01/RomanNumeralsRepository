@@ -26,13 +26,14 @@ public class Roman {
 
             // find the indices for the one and five symbols - fiveIndex = (n*2) -1 
             int fiveIndex = (numOfDigits * 2 ) -1;
+            int tenIndex = fiveIndex + 1;
             int oneIndex = fiveIndex - 1;
-            computeRomanDigit(arabicDigit, this.romanSymbols[oneIndex],this.romanSymbols[fiveIndex]);
+            computeRomanDigit(arabicDigit, this.romanSymbols[oneIndex],this.romanSymbols[fiveIndex], this.romanSymbols[tenIndex]);
         }
         return(numeral);
         
     }
-    private void computeRomanDigit(int arabicDigit, char oneSymbol, char fiveSymbol){
+    private void computeRomanDigit(int arabicDigit, char oneSymbol, char fiveSymbol, char tenSymbol){
 
         if(arabicDigit >= 1 && arabicDigit <=3 ) {
             while(arabicDigit > 0) {
@@ -53,7 +54,7 @@ public class Roman {
         }  	   
         else if (arabicDigit == 9 ) { 
             numeral += oneSymbol;
-            numeral += fiveSymbol;
+            numeral += tenSymbol;
 
         }
         else if (arabicDigit == 0) {
