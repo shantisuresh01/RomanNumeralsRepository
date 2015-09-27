@@ -100,6 +100,9 @@ public class Roman {
         if (roman.indexOf('V', roman.indexOf("V")) != -1) {
             throw new NonRepeatableException();
         }
+        if (roman.indexOf('D', roman.indexOf("D")) != -1) {
+            throw new NonRepeatableException();
+        }
        
     }
 
