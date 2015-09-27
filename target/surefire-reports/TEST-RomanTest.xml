@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="RomanTest" time="0.029" tests="22" errors="0" skipped="0" failures="0">
+<testsuite name="RomanTest" time="0.035" tests="23" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/jre/lib"/>
@@ -60,24 +60,25 @@
   </properties>
   <testcase name="getRomanOf1019ShouldReturnStringMXIX" classname="RomanTest" time="0.015"/>
   <testcase name="getRomanOf4ShouldReturnStringIV" classname="RomanTest" time="0"/>
-  <testcase name="getArabicOfXXXXShouldBe5000" classname="RomanTest" time="0.006"/>
+  <testcase name="getArabicOfXXXXShouldBe5000" classname="RomanTest" time="0.013"/>
   <testcase name="getRomanOf3ShouldReturnStringIII" classname="RomanTest" time="0.001"/>
-  <testcase name="getArabicOfCCCCShouldBe5000" classname="RomanTest" time="0.002"/>
-  <testcase name="getRomanOf55ShouldReturnStringLV" classname="RomanTest" time="0"/>
+  <testcase name="getArabicOfCCCCShouldBe5000" classname="RomanTest" time="0.001"/>
+  <testcase name="getRomanOf55ShouldReturnStringLV" classname="RomanTest" time="0.001"/>
   <testcase name="getRomanOf1999ShouldReturnStringMCMXCIX" classname="RomanTest" time="0"/>
   <testcase name="getRomanOf100ShouldReturnStringC" classname="RomanTest" time="0"/>
-  <testcase name="getArabicOfDDShouldBe5000" classname="RomanTest" time="0.002"/>
+  <testcase name="getArabicOfDDShouldBe5000" classname="RomanTest" time="0.001"/>
   <testcase name="getArabicOfIIIShouldBe3" classname="RomanTest" time="0"/>
   <testcase name="getRomanOf9ShouldReturnStringIX" classname="RomanTest" time="0"/>
   <testcase name="getRomanOf10ShouldReturnStringX" classname="RomanTest" time="0"/>
-  <testcase name="getArabicOfIIIIShouldBe5000" classname="RomanTest" time="0.002"/>
+  <testcase name="getArabicOfIIIIShouldBe5000" classname="RomanTest" time="0.001"/>
   <testcase name="getRomanOf19ShouldReturnStringXIX" classname="RomanTest" time="0"/>
   <testcase name="getRomanOf5ShouldReturnStringV" classname="RomanTest" time="0"/>
   <testcase name="getArabicOfMMMMShouldBe5000" classname="RomanTest" time="0"/>
+  <testcase name="getArabicOfLLShouldBe5000" classname="RomanTest" time="0.001"/>
   <testcase name="getRomanOf12ShouldReturnStringXII" classname="RomanTest" time="0"/>
   <testcase name="getRomanOf1ShouldReturnStringI" classname="RomanTest" time="0"/>
-  <testcase name="getRomanOf16ShouldReturnStringXVI" classname="RomanTest" time="0"/>
+  <testcase name="getRomanOf16ShouldReturnStringXVI" classname="RomanTest" time="0.001"/>
   <testcase name="getRomanOf1000ShouldReturnStringM" classname="RomanTest" time="0"/>
-  <testcase name="getArabicOfVVShouldBe5000" classname="RomanTest" time="0.001"/>
+  <testcase name="getArabicOfVVShouldBe5000" classname="RomanTest" time="0"/>
   <testcase name="getRomanOf2ShouldReturnStringII" classname="RomanTest" time="0"/>
 </testsuite>
