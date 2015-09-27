@@ -101,9 +101,14 @@ public class RomanTest {
         assertEquals(5000, roman.getArabic("XXXX"));
     }
     @Test
-    public void getArabicOfCShouldBe5000(){
+    public void getArabicOfCCCCShouldBe5000(){
         roman = new Roman();
         assertEquals(5000, roman.getArabic("CCCC"));
+    }
+    @Test
+    public void getArabicOfMMMMShouldBe5000(){
+        roman = new Roman();
+        assertEquals(5000, roman.getArabic("MMMM"));
     }
 }
 

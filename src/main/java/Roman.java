@@ -86,6 +86,12 @@ public class Roman {
         if (roman.indexOf("XXXX") != -1) {
             throw new FourLetterException();
         }
+        if (roman.indexOf("CCCC") != -1) {
+            throw new FourLetterException();
+        }
+        if (roman.indexOf("MMMM") != -1) {
+            throw new FourLetterException();
+        }
     }
 
     public static void main(String[] args) {

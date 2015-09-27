@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="RomanTest" time="0.018" tests="19" errors="0" skipped="0" failures="1">
+<testsuite name="RomanTest" time="0.011" tests="20" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/jre/lib"/>
@@ -58,31 +58,24 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="getRomanOf1019ShouldReturnStringMXIX" classname="RomanTest" time="0.004"/>
+  <testcase name="getRomanOf1019ShouldReturnStringMXIX" classname="RomanTest" time="0.003"/>
   <testcase name="getRomanOf4ShouldReturnStringIV" classname="RomanTest" time="0"/>
-  <testcase name="getArabicOfXXXXShouldBe5000" classname="RomanTest" time="0.001"/>
+  <testcase name="getArabicOfXXXXShouldBe5000" classname="RomanTest" time="0"/>
   <testcase name="getRomanOf3ShouldReturnStringIII" classname="RomanTest" time="0"/>
+  <testcase name="getArabicOfCCCCShouldBe5000" classname="RomanTest" time="0"/>
   <testcase name="getRomanOf55ShouldReturnStringLV" classname="RomanTest" time="0"/>
   <testcase name="getRomanOf1999ShouldReturnStringMCMXCIX" classname="RomanTest" time="0"/>
   <testcase name="getRomanOf100ShouldReturnStringC" classname="RomanTest" time="0"/>
   <testcase name="getArabicOfIIIShouldBe3" classname="RomanTest" time="0"/>
   <testcase name="getRomanOf9ShouldReturnStringIX" classname="RomanTest" time="0"/>
   <testcase name="getRomanOf10ShouldReturnStringX" classname="RomanTest" time="0"/>
-  <testcase name="getArabicOfIIIIShouldBe5000" classname="RomanTest" time="0"/>
+  <testcase name="getArabicOfIIIIShouldBe5000" classname="RomanTest" time="0.001"/>
   <testcase name="getRomanOf19ShouldReturnStringXIX" classname="RomanTest" time="0"/>
   <testcase name="getRomanOf5ShouldReturnStringV" classname="RomanTest" time="0"/>
-  <testcase name="getRomanOf12ShouldReturnStringXII" classname="RomanTest" time="0"/>
-  <testcase name="getArabicOfCShouldBe5000" classname="RomanTest" time="0.012">
-    <failure message="expected:&lt;5000&gt; but was:&lt;3&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<5000> but was:<3>
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:645)
-	at org.junit.Assert.assertEquals(Assert.java:631)
-	at RomanTest.getArabicOfCShouldBe5000(RomanTest.java:106)
-]]></failure>
-  </testcase>
+  <testcase name="getArabicOfMMMMShouldBe5000" classname="RomanTest" time="0"/>
+  <testcase name="getRomanOf12ShouldReturnStringXII" classname="RomanTest" time="0.007"/>
   <testcase name="getRomanOf1ShouldReturnStringI" classname="RomanTest" time="0"/>
   <testcase name="getRomanOf16ShouldReturnStringXVI" classname="RomanTest" time="0"/>
-  <testcase name="getRomanOf1000ShouldReturnStringM" classname="RomanTest" time="0.001"/>
+  <testcase name="getRomanOf1000ShouldReturnStringM" classname="RomanTest" time="0"/>
   <testcase name="getRomanOf2ShouldReturnStringII" classname="RomanTest" time="0"/>
 </testsuite>
