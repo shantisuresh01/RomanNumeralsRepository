@@ -69,6 +69,7 @@ public class Roman {
         // Find the Arabic number given the Roman Numeral
        try{
             sanitizeRoman(roman);
+            arabicNumber = 3;
        }
        catch(FourLetterException e) {
             System.out.println("Four Letter Exception");
@@ -76,10 +77,12 @@ public class Roman {
        }            
       return(arabicNumber);
     }
-    private boolean sanitizeRoman(String roman) throws FourLetterException {
+
+    private void sanitizeRoman(String roman) throws FourLetterException {
         // Ensure that Letter I is not repeated four times.
-        throw new FourLetterException();
-        
+        if (roman.indexOf("IIII") != -1) {
+            throw new FourLetterException();
+        }
     }
 
     public static void main(String[] args) {

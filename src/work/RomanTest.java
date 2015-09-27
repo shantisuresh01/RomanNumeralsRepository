@@ -86,9 +86,14 @@ public class RomanTest {
         assertEquals("LV", roman.getRoman(55));
     }
     @Test
-    public void getArabicOfIIIIShouldBeError(){
+    public void getArabicOfIIIIShouldBe5000(){
         roman = new Roman();
         assertEquals(5000, roman.getArabic("IIII"));
+    }
+    @Test
+    public void getArabicOfIIIShouldBe3(){
+        roman = new Roman();
+        assertEquals(3, roman.getArabic("III"));
     }
 }
 
