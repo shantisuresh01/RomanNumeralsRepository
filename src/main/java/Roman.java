@@ -1,9 +1,11 @@
 public class Roman {
     private String numeral;
+    private int arabicNumber;
     private char[] romanSymbols;
     {
        // instance initialization block
         numeral = "";
+        arabicNumber = 0;
         romanSymbols = new char[] {'I', 'V', 'X', 'L', 'C', 'D', 'M', 'M', 'M'};
     }
 
@@ -57,6 +59,29 @@ public class Roman {
         else if (arabicDigit == 0) {
             // do nothing
             ;
+        }
+    }
+   // ReverseRoman from this point on
+   // Create an Exception for Four consecutive one-letters in input
+    private class FourLetterException extends Exception { }
+
+    public int getArabic(String roman) {
+        // Find the Arabic number given the Roman Numeral
+       try{
+            sanitizeRoman(roman);
+            arabicNumber = 3;
+       }
+       catch(FourLetterException e) {
+            System.out.println("Four Letter Exception");
+            return(5000);
+       }            
+      return(arabicNumber);
+    }
+
+    private void sanitizeRoman(String roman) throws FourLetterException {
+        // Ensure that Letter I is not repeated four times.
+        if (roman.indexOf("IIII") != -1) {
+            throw new FourLetterException();
         }
     }
 

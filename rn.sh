@@ -4,7 +4,7 @@
 # Run Tests:
 mvn test
 # Compile source and create a WAR file to later install in Tomcat perhaps.
-mvn clean compile war:war
+#mvn clean compile war:war
 
 # Commenting the following because project has been properly Mavenized.
 # javac -cp /usr/share/java/lib/junit-4.12.jar Roman.java RomanTest.java
