@@ -64,6 +64,7 @@ public class Roman {
    // ReverseRoman from this point on
    // Create an Exception for Four consecutive one-letters in input
     private class FourLetterException extends Exception { }
+    private class NonRepeatableException extends Exception { }
 
     public int getArabic(String roman) {
         // Find the Arabic number given the Roman Numeral
@@ -75,10 +76,14 @@ public class Roman {
             System.out.println("Four Letter Exception");
             return(5000);
        }            
+       catch(NonRepeatableException e) {
+            System.out.println("Non Repeatable Exception");
+            return(5000);
+       }            
       return(arabicNumber);
     }
 
-    private void sanitizeRoman(String roman) throws FourLetterException {
+    private void sanitizeRoman(String roman) throws FourLetterException, NonRepeatableException {
         // Ensure that Letter I is not repeated four times.
         if (roman.indexOf("IIII") != -1) {
             throw new FourLetterException();
@@ -92,6 +97,10 @@ public class Roman {
         if (roman.indexOf("MMMM") != -1) {
             throw new FourLetterException();
         }
+        if (roman.indexOf('V', roman.indexOf("V")) != -1) {
+            throw new NonRepeatableException();
+        }
+       
     }
 
     public static void main(String[] args) {
