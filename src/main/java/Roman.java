@@ -1,4 +1,15 @@
-public class Roman {
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("/romanengine")
+public class Roman extends HttpServlet {
     private String numeral;
     private int arabicNumber;
     private char[] romanSymbols;
@@ -7,6 +18,44 @@ public class Roman {
         numeral = "";
         arabicNumber = 0;
         romanSymbols = new char[] {'I', 'V', 'X', 'L', 'C', 'D', 'M', 'M', 'M'};
+    }
+    public Roman() {}
+   
+    private Integer getInt(String s) {
+        try {
+            Integer a = new Integer(s);
+            return a;
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+    public void serviceRequest(HttpServletRequest request,
+        HttpServletResponse response) throws ServletException, IOException     {
+
+            // harvest the arabic input string and convert to Integer
+            String arabic_string = request.getParameter("number");
+            Integer arabic = getInt(arabic_string);
+
+            // get Roman Numeral
+            String numeral = getRoman(arabic);
+
+            // populate response attributes so that JSP can use these values to create the response
+            request.setAttribute("number", arabic);
+            request.setAttribute("numeral", numeral);
+            RequestDispatcher rd = request.getRequestDispatcher("/jsp/index.jsp");
+            rd.forward(request, response);
+
+    } 
+    protected void doGet(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException     {
+
+        serviceRequest(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException {
+
+        serviceRequest(request, response);
     }
 
     public String getRoman(int arabic) {

@@ -1,0 +1,66 @@
+<html>
+<head>
+    <link rel="stylesheet" href="css/roman.css"/>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+     $("#msgid").html("Roman Numeral Converter");
+    });
+
+    </script>
+    <script type="text/javascript">
+        function validateForm() {
+            var txt = "";
+            if (document.getElementById("number").checkValidity() == false) {
+               txt = "Value too large";
+            }
+    $("#error_msg").html = txt;
+    }
+<!--
+        window.addEventListener("DOMContentLoaded", function () {
+            var form = document.getElementById("roman_button_id").addEventListener("click", function () {
+                form.submit();
+            });
+        });
+-->
+    </script>
+</head>
+<body>
+
+    <form name="roman_form" action="/roman" onsubmit="return validateForm()" method="post" > 
+<!--    <form name="roman_form" action="/roman_handler" method="post" > -->
+
+    <div id="msgid" class=largefont>
+    </div>
+    <table>
+        <tr>
+            <td>
+                <div>
+                    <label for="number">Enter Number:</label>
+                    <input type="number" name="number" id="number" min="1" max="4000" >
+                </div>
+            </td>
+        </tr>
+        <tr>
+<!--
+            <td>Result:</td>
+            <td><input type="text" name="result" disabled="disabled"/></td>
+-->
+            <td>
+                    <label for="numeral_result">Result:    </label>
+                    <input type="text" name="numeral" value=${request.numeral} id="numeral_result" \>
+            </td>
+        </tr>
+    </table>
+    
+    <div class="button">
+        <button id="roman_button_id" type="submit">Convert</button>
+    </div>
+
+    <p id="error_msg"><rp>
+
+    </form>
+
+</body>
+</html>
