@@ -5,7 +5,7 @@
     <script type="text/javascript">
 
     $(document).ready(function(){
-     $("#msgid").html("Roman Numeral Converter");
+     $("#msgid").html("Roman Numeral Converter, range 1 - 3999 ");
     });
 
     </script>
