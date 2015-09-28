@@ -45,7 +45,7 @@
             <td>
                 <div>
                     <label for="number">Enter Number:</label>
-                    <input type="number" name="number" id="number" value="${number}" min="1" max="4000" >
+                    <input type="number" name="number" id="number" value="${number}" min="1" max="3999" >
 <!--
                     <input type="number" name="number" id="number" value=<%= request.getAttribute("number") %> min="1" max="4000" >
 -->
