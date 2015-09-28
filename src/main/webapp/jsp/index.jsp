@@ -5,7 +5,8 @@
     <script type="text/javascript">
 
     $(document).ready(function(){
-     $("#msgid").html("Roman Numeral Converter, range 1 - 3999 ");
+     $("#msgid").html("Roman Numeral Converter");
+     $("#rangeid").html("Enter range 1 - 3999 ");
     });
 
     </script>
@@ -32,6 +33,8 @@
 
     <div id="msgid" class=largefont>
     </div>
+    <div id="rangeid" class=largefont>
+    </div>
     <table>
         <tr>
             <td>
@@ -43,7 +46,7 @@
         </tr>
         <tr>
             <td>
-                    <label for="numeral_result">Result:    </label>
+                    <label for="numeral_result">Numeral:    </label>
                     <input type="text" name="numeral" disabled="disabled" value=<%= request.getAttribute("numeral") %> id="numeral_result" \>
             </td>
         </tr>

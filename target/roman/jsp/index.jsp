@@ -6,6 +6,7 @@
 
     $(document).ready(function(){
      $("#msgid").html("Roman Numeral Converter");
+     $("#rangeid").html("Enter range 1 - 3999 ");
     });
 
     </script>
@@ -24,37 +25,28 @@
            document.getElementById("roman_form").submit(); 
        }
 
-<!--
-        window.addEventListener("DOMContentLoaded", function () {
-            var form = document.getElementById("roman_button_id").addEventListener("click", function () {
-                form.submit();
-            });
-        });
--->
     </script>
 </head>
 <body onLoad="clearForms()" onUnload="clearForms()">
 
     <form name="roman_form" id="roman_form" action="romanengine" onsubmit="return validateForm()" method="post" > 
-<!--    <form name="roman_form" action="romanengine" method="post" > -->
 
     <div id="msgid" class=largefont>
+    </div>
+    <div id="rangeid" class=largefont>
     </div>
     <table>
         <tr>
             <td>
                 <div>
                     <label for="number">Enter Number:</label>
-                    <input type="number" name="number" id="number" value="${number}" min="1" max="4000" >
-<!--
-                    <input type="number" name="number" id="number" value=<%= request.getAttribute("number") %> min="1" max="4000" >
--->
+                    <input type="number" name="number" id="number" value="${number}" min="1" max="3999" >
                 </div>
             </td>
         </tr>
         <tr>
             <td>
-                    <label for="numeral_result">Result:    </label>
+                    <label for="numeral_result">Numeral:    </label>
                     <input type="text" name="numeral" disabled="disabled" value=<%= request.getAttribute("numeral") %> id="numeral_result" \>
             </td>
         </tr>

@@ -9,6 +9,10 @@
     color: green;
 }
 
+#rangeid{
+    color: mediumorchid;
+}
+
 form {
     /* Just to center the form on the page */
     margin: 0 auto;
