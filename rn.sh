@@ -20,7 +20,7 @@ mvn test
 # Get code into OpenShift cloud
 # git remote add openshift ssh://560951960c1e667f6600005e@romannumeral-cybersecurity.rhcloud.com/~/git/romannumeral.git/
 # git checkout master
-# git checkout -n openshift
+# git checkout -b openshift
 # git push openshift HEAD:master -f 
 # To deploy app to OpenShift,  check out the local openshift branch and merge master branch with it, then force push to OpenShift, however -f may not be required for the next pushes:
 

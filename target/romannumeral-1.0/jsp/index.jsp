@@ -24,11 +24,19 @@
            document.getElementById("roman_form").submit(); 
        }
 
+<!--
+        window.addEventListener("DOMContentLoaded", function () {
+            var form = document.getElementById("roman_button_id").addEventListener("click", function () {
+                form.submit();
+            });
+        });
+-->
     </script>
 </head>
 <body onLoad="clearForms()" onUnload="clearForms()">
 
     <form name="roman_form" id="roman_form" action="romanengine" onsubmit="return validateForm()" method="post" > 
+<!--    <form name="roman_form" action="romanengine" method="post" > -->
 
     <div id="msgid" class=largefont>
     </div>
@@ -38,6 +46,9 @@
                 <div>
                     <label for="number">Enter Number:</label>
                     <input type="number" name="number" id="number" value="${number}" min="1" max="3999" >
+<!--
+                    <input type="number" name="number" id="number" value=<%= request.getAttribute("number") %> min="1" max="4000" >
+-->
                 </div>
             </td>
         </tr>

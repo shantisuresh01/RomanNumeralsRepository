@@ -60,6 +60,8 @@ public class Roman extends HttpServlet {
 
     public String getRoman(int arabic) {
 
+        // initialize numeral to empty string
+        numeral = "";
         // Find the number of digits in the arabic number:
         if (arabic <= 0 || arabic >= 4000) {
             numeral = "Oops!";
