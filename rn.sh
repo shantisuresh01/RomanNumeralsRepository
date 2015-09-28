@@ -28,4 +28,11 @@ mvn test
 # git merge --no-ff master
 # git push openshift HEAD:master -f
 
+# How to replace master entirely with dev
+# git checkout dev
+# git merge -s ours master
+# git checkout master
+# git merge dev
+# git push upstream master
+# git checkout dev
 
