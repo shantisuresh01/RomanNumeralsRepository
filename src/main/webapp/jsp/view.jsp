@@ -1,7 +1,7 @@
 <html>
 <head>
-    <link rel="stylesheet" href="css/roman.css"/>
-    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/roman.css"/>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript">
 
     $(document).ready(function(){
@@ -27,9 +27,9 @@
 
     </script>
 </head>
-<body onLoad="clearForms()" onUnload="clearForms()">
+<body>
 
-    <form name="roman_form" id="roman_form" action="romanengine" onsubmit="return validateForm()" method="post" > 
+    <form name="roman_form" id="roman_form" action="${pageContext.request.contextPath}/romanengine" onsubmit="return validateForm()" method="post" > 
 
     <div id="msgid" class=largefont>
     </div>

@@ -13,12 +13,15 @@ public class Roman extends HttpServlet {
     private String numeral;
     private int arabicNumber;
     private char[] romanSymbols;
+    private StringBuilder errorMsg = new StringBuilder();
     {
        // instance initialization block
         numeral = "";
         arabicNumber = 0;
+        errorMsg.setLength(0);
         romanSymbols = new char[] {'I', 'V', 'X', 'L', 'C', 'D', 'M', 'M', 'M'};
     }
+
     public Roman() {}
    
     private Integer getInt(String s) {
@@ -113,53 +116,66 @@ public class Roman extends HttpServlet {
             ;
         }
     }
+   // -----------------------
+   // -----------------------
    // ReverseRoman from this point on
-   // Create an Exception for Four consecutive one-letters in input
-    private class FourLetterException extends Exception { }
-    private class NonRepeatableException extends Exception { }
 
-    public int getArabic(String roman) {
-        // Find the Arabic number given the Roman Numeral
-       try{
-            sanitizeRoman(roman);
-            arabicNumber = 3;
-       }
-       catch(FourLetterException e) {
-            System.out.println("Four Letter Exception");
-            return(5000);
-       }            
-       catch(NonRepeatableException e) {
-            System.out.println("Non Repeatable Exception");
-            return(5000);
-       }            
-      return(arabicNumber);
+    private int getArabicNumber() {
+        return this.arabicNumber;
     }
 
-    private void sanitizeRoman(String roman) throws FourLetterException, NonRepeatableException {
-        // Ensure that Letter I is not repeated four times.
+    private void setArabicNumber(int i) {
+        this.arabicNumber = i;
+    }
+    private void setErrorMsg(String errorMsg) {
+        this.errorMsg.setLength(0);
+        this.errorMsg.append(errorMsg);
+    }
+    public int getArabic(String roman) {
+        if (!containsRomanCharacters(roman)) {
+            setErrorMsg("Error: Letters are not Roman Numerals");
+            setArabicNumber(5000);
+        }
+        else if(FourLetterRepeat(roman)) {
+            setErrorMsg("Error: Letters cannot be repeated four times");
+            setArabicNumber(5000);
+        }
+        else {
+          setArabicNumber(3);
+        }
+        return(getArabicNumber());
+    }
+
+
+    private boolean containsRomanCharacters(String roman) {
+        // test if characters are Roman numeral characters
+        return (roman == null) ? false : roman.matches("[IVXLCM]*");
+    }
+    private boolean FourLetterRepeat(String roman) {
+        // Ensure that Roman Letters are not repeated four times.
         if (roman.indexOf("IIII") != -1) {
-            throw new FourLetterException();
+            return true;
         }
         if (roman.indexOf("XXXX") != -1) {
-            throw new FourLetterException();
+            return true;
         }
         if (roman.indexOf("CCCC") != -1) {
-            throw new FourLetterException();
+            return true;
         }
         if (roman.indexOf("MMMM") != -1) {
-            throw new FourLetterException();
+            return true;
         }
         if (roman.indexOf('V', roman.indexOf("V")) != -1) {
-            throw new NonRepeatableException();
+            return true;
         }
         if (roman.indexOf('L', roman.indexOf("L")) != -1) {
-            throw new NonRepeatableException();
+            return true;
         }
         if (roman.indexOf('D', roman.indexOf("D")) != -1) {
-            throw new NonRepeatableException();
+            return true;
         }
-       
-    }
+        return false;
+    } 
 
     public static void main(String[] args) {
         // Find the number of digits in a number:

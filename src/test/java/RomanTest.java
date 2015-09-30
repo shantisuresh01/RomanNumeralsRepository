@@ -125,6 +125,11 @@ public class RomanTest {
         roman = new Roman();
         assertEquals(5000, roman.getArabic("DD"));
     }
+    @Test
+    public void getArabicOfnonRomanShouldBe5000(){
+        roman = new Roman();
+        assertEquals(5000, roman.getArabic("A"));
+    }
 }
 
 
