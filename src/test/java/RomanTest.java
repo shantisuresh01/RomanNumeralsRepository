@@ -130,6 +130,15 @@ public class RomanTest {
         roman = new Roman();
         assertEquals(5000, roman.getArabic("A"));
     }
+
+    // The '1' symbols ('I', 'X', and 'C') can only be subtracted from the 
+    // 2 next highest values ('IV' and 'IX', 'XL' and 'XC', 'CD' and 'CM').
+
+    @Test
+    public void getArabicOfILShouldBe5000(){
+        roman = new Roman();
+        assertEquals(5000, roman.getArabic("IL"));
+    }
 }
 
 

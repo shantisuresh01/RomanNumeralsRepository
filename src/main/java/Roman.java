@@ -73,9 +73,10 @@ public class Roman extends HttpServlet {
          }
         int numOfDigits = (int)(Math.log10(arabic) + 1);
 
+        // Reduce the input number by it's thousands, hundreds, tens and ones.
 	for (; numOfDigits >=1; numOfDigits--) {
             int powerOfTen = (int)Math.pow(10,(numOfDigits - 1));
-            int arabicDigit =  arabic / powerOfTen;
+            int arabicDigit =  arabic / powerOfTen;  //  ignore the decimal part
             arabic = arabic - (arabicDigit * powerOfTen);
 
             // find the indices for the one, five and ten symbols - fiveIndex = (n*2) -1 
@@ -177,6 +178,18 @@ public class Roman extends HttpServlet {
         return false;
     } 
 
+    private boolean doubleSubtractivePattern(String roman) {
+        
+        if (roman.matches("I[LCD]")) {
+            return true;
+        }
+        else if(roman.matches("X[DM]")){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     public static void main(String[] args) {
         // Find the number of digits in a number:
         int i = 10;
