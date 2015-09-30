@@ -141,6 +141,10 @@ public class Roman extends HttpServlet {
             setErrorMsg("Error: Letters cannot be repeated four times");
             setArabicNumber(5000);
         }
+        else if(doubleSubtractivePattern(roman)) {
+            setErrorMsg("Error: One symbols may be subtracted only from next two higher symbols");
+            setArabicNumber(5000);
+        }
         else {
           setArabicNumber(3);
         }
