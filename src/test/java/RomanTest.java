@@ -110,6 +110,7 @@ public class RomanTest {
         roman = new Roman();
         assertEquals(5000, roman.getArabic("MMMM"));
     }
+    // 'Five' letters cannot occur more than once
     @Test
     public void getArabicOfVVShouldBe5000(){
         roman = new Roman();
@@ -124,6 +125,16 @@ public class RomanTest {
     public void getArabicOfDDShouldBe5000(){
         roman = new Roman();
         assertEquals(5000, roman.getArabic("DD"));
+    }
+    @Test
+    public void getArabicOfVIVShouldBe5000(){
+        roman = new Roman();
+        assertEquals(5000, roman.getArabic("VIV"));
+    }
+    @Test
+    public void getArabicOfMDCDShouldBe5000(){
+        roman = new Roman();
+        assertEquals(5000, roman.getArabic("MDCD"));
     }
     @Test
     public void getArabicOfnonRomanShouldBe5000(){

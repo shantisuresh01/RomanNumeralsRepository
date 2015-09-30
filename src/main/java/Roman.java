@@ -137,11 +137,15 @@ public class Roman extends HttpServlet {
             setErrorMsg("Error: Letters are not Roman Numerals");
             setArabicNumber(5000);
         }
-        else if(FourLetterRepeat(roman)) {
-            setErrorMsg("Error: Letters cannot be repeated four times");
+        else if(fourLetterRepeatOfOnes(roman)) {
+            setErrorMsg("Error: 'One' letters cannot be repeated four times");
             setArabicNumber(5000);
         }
-        else if(doubleSubtractivePattern(roman)) {
+        else if(repeatOfFives(roman)) {
+            setErrorMsg("Error: 'Five' letters cannot more than once ");
+            setArabicNumber(5000);
+        }
+        else if(incorrectSubtractivePattern(roman)) {
             setErrorMsg("Error: One symbols may be subtracted only from next two higher symbols");
             setArabicNumber(5000);
         }
@@ -156,7 +160,7 @@ public class Roman extends HttpServlet {
         // test if characters are Roman numeral characters
         return (roman == null) ? false : roman.matches("[IVXLCM]*");
     }
-    private boolean FourLetterRepeat(String roman) {
+    private boolean fourLetterRepeatOfOnes(String roman) {
         // Ensure that Roman Letters are not repeated four times.
         if (roman.indexOf("IIII") != -1) {
             return true;
@@ -170,6 +174,10 @@ public class Roman extends HttpServlet {
         if (roman.indexOf("MMMM") != -1) {
             return true;
         }
+        return false;
+    }
+
+    private boolean repeatOfFives(String roman) {
         if (roman.indexOf('V', roman.indexOf("V")) != -1) {
             return true;
         }
@@ -182,7 +190,7 @@ public class Roman extends HttpServlet {
         return false;
     } 
 
-    private boolean doubleSubtractivePattern(String roman) {
+    private boolean incorrectSubtractivePattern(String roman) {
         
         if (roman.matches("I[LCD]")) {
             return true;
@@ -194,6 +202,7 @@ public class Roman extends HttpServlet {
             return false;
         }
     }
+
     public static void main(String[] args) {
         // Find the number of digits in a number:
         int i = 10;
