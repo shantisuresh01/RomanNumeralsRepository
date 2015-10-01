@@ -295,7 +295,7 @@ public class Roman extends HttpServlet {
                 // subtractive?
                 if(typeAtI == 5) { // Five-types may not participate in subtraction
                     arabicResult.setErrorMsg("Invalid Roman Value");
-                    arabicResult.setComputedNumber(0);
+                    arabicResult.setComputedNumber(5000);
                     return arabicResult;
                 }
                 else if ((valueAtIAnd1 == 5 * valueAtI) || (valueAtIAnd1 == 10 * valueAtI)) {
@@ -305,7 +305,7 @@ public class Roman extends HttpServlet {
                  } 
                  else {
                     arabicResult.setErrorMsg("Invalid Roman Value");
-                    arabicResult.setComputedNumber(0);
+                    arabicResult.setComputedNumber(5000);
                     return arabicResult;
                  }
             }

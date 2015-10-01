@@ -159,5 +159,10 @@ public class RomanTest {
 
     // Only one subtraction may be made per numeral
     // Not allowed: IIV, IIX, XXC, XXL, VIX, LXC, DCM
+    @Test
+    public void getArabicOfIIVShouldBe5000(){
+        roman = new Roman();
+        assertEquals(5000, roman.getArabic("IIV"));
+    }
    
 }
