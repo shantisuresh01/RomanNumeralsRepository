@@ -11,13 +11,39 @@ import java.util.*;
 
 enum RomanNumeral {
 
-    M(1000), D(500), C(100), L(50), X(10), V(5), I(1);
-    RomanNumeral(int value) { // constructor
+    M(1000, 1), D(500, 5), C(100, 1), L(50, 5), X(10, 1), V(5, 5), I(1, 1);
+    RomanNumeral(int value, int type) { // constructor
          this.value = value;
+         this.type = type;
     }
      private int value;      // an instance variable
+     private int type;      // an instance variable
      public int getValue() {
          return value;
+    }
+     public int getType() {
+         return type;
+    }
+}
+
+class ArabicResult{
+    private int computedNumber;
+    private String errorMsg;
+    public ArabicResult(int computedNumber, String errorMsg) {
+        this.computedNumber = computedNumber;
+        this.errorMsg = errorMsg;
+    }
+    public void setComputedNumber(int computedNumber) {
+        this.computedNumber = computedNumber;
+    }
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+    }
+    public int getComputedNumber() {
+        return computedNumber;
+    }
+    public String getErrorMsg() {
+        return errorMsg;
     }
 }
 
@@ -145,7 +171,11 @@ public class Roman extends HttpServlet {
         this.errorMsg.setLength(0);
         this.errorMsg.append(errorMsg);
     }
+
     public int getArabic(String roman) {
+
+        ArabicResult arabicResult = new ArabicResult(0, "");
+
         if (!containsRomanCharacters(roman)) {
             setErrorMsg("Error: Letters are not Roman Numerals");
             setArabicNumber(5000);
@@ -155,7 +185,7 @@ public class Roman extends HttpServlet {
             setArabicNumber(5000);
         }
         else if(repeatOfFives(roman)) {
-            setErrorMsg("Error: 'Five' letters cannot more than once ");
+            setErrorMsg("Error: 'Five' letters cannot occur more than once ");
             setArabicNumber(5000);
         }
         else if(incorrectSubtractivePattern(roman)) {
@@ -163,7 +193,9 @@ public class Roman extends HttpServlet {
             setArabicNumber(5000);
         }
         else {
-          setArabicNumber(3);
+            arabicResult = computeArabicNumber(roman);
+            setErrorMsg(arabicResult.getErrorMsg());
+            setArabicNumber(arabicResult.getComputedNumber());
         }
         return(getArabicNumber());
     }
@@ -216,24 +248,80 @@ public class Roman extends HttpServlet {
         }
     }
 
-    public int computeArabicValue(String roman) {
-
+    public ArabicResult computeArabicNumber(String roman) {
+        
         List<RomanNumeral> inputList = new ArrayList<RomanNumeral>();
+        List<Integer> inputValues = new ArrayList<Integer>();
         int sum = 0;
 
+        // initialize ArabicResult
+        ArabicResult arabicResult = new ArabicResult(0, "");
+ 
+        
+        // form an inputList basded on the Roman input string
         for (int i = 0; i < roman.length(); i++){
             char c = roman.charAt(i);
             inputList.add(RomanNumeral.valueOf(String.valueOf(c)));
         }
-        for (int i = 0; i < inputList.size(); i++){
-            sum += inputList.get(i).getValue();
+
+        // check the size of the input string
+        if (roman.length() == 1) {
+            arabicResult.setComputedNumber(inputList.get(0).getValue());
+            arabicResult.setErrorMsg("");
+            return(arabicResult);
         }
-           // get letter [i]
-           // is letter[i] a 'one' symbol
-           // get the next letter [i+1]
-           // is letter[i+1] the same one-symbol?
-           // is it a one-element?
-       return(sum);
+
+        for (int i = 0; i < inputList.size(); i++){
+            int valueAtI = inputList.get(i).getValue();
+            int typeAtI = inputList.get(i).getType();
+            if (i == inputList.size() - 1) {
+            // last element
+                 inputValues.add(valueAtI);
+                 break;
+            }
+            else if (i == inputList.size()) {
+            // subtraction operation - already accounts for last two elements
+            break;
+            }
+
+            int valueAtIAnd1 = inputList.get(i+1).getValue();
+            int typeAtIAnd1 = inputList.get(i+1).getType();
+
+            if(valueAtI > valueAtIAnd1) {
+                 inputValues.add(valueAtI);
+                 continue;
+            }
+            else if (valueAtI < valueAtIAnd1) {
+                // subtractive?
+                if(typeAtI == 5) { // Five-types may not participate in subtraction
+                    arabicResult.setErrorMsg("Invalid Roman Value");
+                    arabicResult.setComputedNumber(0);
+                    return arabicResult;
+                }
+                else if ((valueAtIAnd1 == 5 * valueAtI) || (valueAtIAnd1 == 10 * valueAtI)) {
+                     inputValues.add(valueAtIAnd1 - valueAtI);
+                     i++;  // advance the iterator since we have handled two places.
+                     continue;
+                 } 
+                 else {
+                    arabicResult.setErrorMsg("Invalid Roman Value");
+                    arabicResult.setComputedNumber(0);
+                    return arabicResult;
+                 }
+            }
+            else if ((valueAtI == valueAtIAnd1) && (typeAtI == typeAtIAnd1)) {
+                if(typeAtI == 1) {
+                    inputValues.add(valueAtI);
+                    continue;
+                }
+            }
+        }
+        for (int i = 0; i < inputValues.size(); i++){
+            sum += inputValues.get(i);
+        }
+        arabicResult.setErrorMsg("");
+        arabicResult.setComputedNumber(sum);
+        return arabicResult;
             
     }
 
@@ -243,5 +331,9 @@ public class Roman extends HttpServlet {
 //        int j = (Integer.toBinaryString(i >> 1));
         int j = (int)(Math.log10(i)+1);
         System.out.println("j is : " + j );
+
+        Roman roman = new Roman();
+        System.out.println("Arabic of III = " + roman.getArabic("III"));
     }
 }    
+
