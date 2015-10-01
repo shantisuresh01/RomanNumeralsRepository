@@ -299,6 +299,13 @@ public class Roman extends HttpServlet {
                     return arabicResult;
                 }
                 else if ((valueAtIAnd1 == 5 * valueAtI) || (valueAtIAnd1 == 10 * valueAtI)) {
+                     int subtractive_value = valueAtIAnd1 - valueAtI;
+                     int previous_value = inputList.get(i-1).getValue();
+                     if (subtractive_value > previous_value) {
+                         arabicResult.setErrorMsg("Invalid Roman Value");
+                         arabicResult.setComputedNumber(5000);
+                         return arabicResult;
+                     } 
                      inputValues.add(valueAtIAnd1 - valueAtI);
                      i++;  // advance the iterator since we have handled two places.
                      continue;
