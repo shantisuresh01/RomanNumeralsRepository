@@ -144,13 +144,20 @@ public class RomanTest {
 
     // The '1' symbols ('I', 'X', and 'C') can only be subtracted from the 
     // 2 next highest values ('IV' and 'IX', 'XL' and 'XC', 'CD' and 'CM').
+    // Not allowed: IL, IC, ID, XD, XM
 
     @Test
     public void getArabicOfILShouldBe5000(){
         roman = new Roman();
         assertEquals(5000, roman.getArabic("IL"));
     }
+    @Test
+    public void getArabicOfXDShouldBe5000(){
+        roman = new Roman();
+        assertEquals(5000, roman.getArabic("XD"));
+    }
+
+    // Only one subtraction may be made per numeral
+    // Not allowed: IIV, IIX, XXC, XXL, VIX, LXC, DCM
+   
 }
-
-
-

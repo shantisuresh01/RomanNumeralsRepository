@@ -7,6 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.*;
+
+enum RomanNumeral {
+
+    M(1000), D(500), C(100), L(50), X(10), V(5), I(1);
+    RomanNumeral(int value) { // constructor
+         this.value = value;
+    }
+     private int value;      // an instance variable
+     public int getValue() {
+         return value;
+    }
+}
 
 @WebServlet("/romanengine")
 public class Roman extends HttpServlet {
@@ -201,6 +214,27 @@ public class Roman extends HttpServlet {
         else {
             return false;
         }
+    }
+
+    public int computeArabicValue(String roman) {
+
+        List<RomanNumeral> inputList = new ArrayList<RomanNumeral>();
+        int sum = 0;
+
+        for (int i = 0; i < roman.length(); i++){
+            char c = roman.charAt(i);
+            inputList.add(RomanNumeral.valueOf(String.valueOf(c)));
+        }
+        for (int i = 0; i < inputList.size(); i++){
+            sum += inputList.get(i).getValue();
+        }
+           // get letter [i]
+           // is letter[i] a 'one' symbol
+           // get the next letter [i+1]
+           // is letter[i+1] the same one-symbol?
+           // is it a one-element?
+       return(sum);
+            
     }
 
     public static void main(String[] args) {
