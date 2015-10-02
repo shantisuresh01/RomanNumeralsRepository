@@ -194,5 +194,25 @@ public class RomanTest {
         roman = new Roman();
         assertEquals(5000, roman.getArabic("DCM"));
     }
+    @Test
+    public void getArabicOfAAAShouldBe5000(){
+        roman = new Roman();
+        assertEquals(5000, roman.getArabic("AAA"));
+    }
+    @Test
+    public void getArabicOfVShouldBe5(){
+        roman = new Roman();
+        assertEquals(5, roman.getArabic("V"));
+    }
+    @Test
+    public void getArabicOfLVIShouldBe56(){
+        roman = new Roman();
+        assertEquals(56, roman.getArabic("LVI"));
+    }
+    @Test
+    public void getArabicOfCMShouldBe56(){
+        roman = new Roman();
+        assertEquals(900, roman.getArabic("CM"));
+    }
    
 }

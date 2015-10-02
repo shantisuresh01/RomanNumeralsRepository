@@ -63,6 +63,26 @@ public class Roman extends HttpServlet {
 
     public Roman() {}
    
+    private void setNumeral(String s) {
+        this.numeral = s;
+    }
+    public String getNumeral() {
+        return(this.numeral);
+    }
+    private void setArabicNumber(int i) {
+        this.arabicNumber = i;
+    }
+    public int getArabicNumber() {
+        return this.arabicNumber;
+    }
+
+    private void setErrorMsg(String errorMsg) {
+        this.errorMsg.setLength(0);
+        this.errorMsg.append(errorMsg);
+    }
+    public String getErrorMsg() {
+        return(this.errorMsg.toString());
+    }
     private Integer getInt(String s) {
         try {
             Integer a = new Integer(s);
@@ -75,15 +95,21 @@ public class Roman extends HttpServlet {
         HttpServletResponse response) throws ServletException, IOException     {
 
             // harvest the arabic input string and convert to Integer
-            String arabic_string = request.getParameter("number");
-            Integer arabic = getInt(arabic_string);
-
-            // get Roman Numeral
-            String numeral = getRoman(arabic);
-
+            String input_question = request.getParameter("question");
+            Integer arabic = getInt(input_question);
+            String output_result="";
+            if (arabic != null) {
+                // get Roman Numeral
+                output_result = getRoman(arabic);
+            }
+            else {
+                // get Roman Numeral
+                output_result = String.valueOf(getArabic(input_question));
+            }
             // populate response attributes so that JSP can use these values to create the response
-            request.setAttribute("number", arabic);
-            request.setAttribute("numeral", numeral);
+            request.setAttribute("question", input_question);
+            request.setAttribute("result", output_result);
+            request.setAttribute("error_msg", getErrorMsg());
             RequestDispatcher rd = request.getRequestDispatcher("/jsp/index.jsp");
             rd.forward(request, response);
 
@@ -102,8 +128,7 @@ public class Roman extends HttpServlet {
 
     public String getRoman(int arabic) {
 
-        // initialize numeral to empty string
-        numeral = "";
+         numeral = "";
 
         // Find the number of digits in the arabic number:
         if (arabic <= 0 || arabic >= 4000) {
@@ -112,20 +137,49 @@ public class Roman extends HttpServlet {
          }
         int numOfDigits = (int)(Math.log10(arabic) + 1);
 
-        // Reduce the input number by it's thousands, hundreds, tens and ones.
-	for (; numOfDigits >=1; numOfDigits--) {
+        for (; numOfDigits >=1; numOfDigits--) {
             int powerOfTen = (int)Math.pow(10,(numOfDigits - 1));
-            int arabicDigit =  arabic / powerOfTen;  //  ignore the decimal part
+            int arabicDigit =  arabic / powerOfTen;
             arabic = arabic - (arabicDigit * powerOfTen);
 
-            // find the indices for the one, five and ten symbols - fiveIndex = (n*2) -1 
+            // find the indices for the one, five and ten symbols - fiveIndex = (n*2) -1
             int fiveIndex = (numOfDigits * 2 ) -1;
             int tenIndex = fiveIndex + 1;
             int oneIndex = fiveIndex - 1;
             computeRomanDigit(arabicDigit, this.romanSymbols[oneIndex],this.romanSymbols[fiveIndex], this.romanSymbols[tenIndex]);
         }
         return(numeral);
-        
+
+    }
+    public String getRomanNew(int arabic) {
+
+         String numeral="";
+        // initialize numeral to empty string
+        setNumeral("");
+
+        // Find the number of digits in the arabic number:
+        if (arabic <= 0 || arabic >= 4000) {
+            setNumeral("Oops!");
+            setErrorMsg("Error: Integer out or range");
+         }
+         else {
+            int numOfDigits = (int)(Math.log10(arabic) + 1);
+
+            // Reduce the input number by it's thousands, hundreds, tens and ones.
+             for (; numOfDigits >=1; numOfDigits--) {
+                int powerOfTen = (int)Math.pow(10,(numOfDigits - 1));
+                int arabicDigit =  arabic / powerOfTen;  //  ignore the decimal part
+                arabic = arabic - (arabicDigit * powerOfTen);
+    
+                // find the indices for the one, five and ten symbols - fiveIndex = (n*2) -1 
+                int fiveIndex = (numOfDigits * 2 ) -1;
+                int tenIndex = fiveIndex + 1;
+                int oneIndex = fiveIndex - 1;
+                computeRomanDigit(arabicDigit, this.romanSymbols[oneIndex],this.romanSymbols[fiveIndex], this.romanSymbols[tenIndex]);
+                setErrorMsg("");
+            }
+        }
+        return(getNumeral());
     }
     private void computeRomanDigit(int arabicDigit, char oneSymbol, char fiveSymbol, char tenSymbol){
 
@@ -134,19 +188,19 @@ public class Roman extends HttpServlet {
                 arabicDigit-- ;
                 numeral += oneSymbol;
             }
-        } 
+        }
         else if (arabicDigit == 4) {
                 numeral += oneSymbol;
                 numeral += fiveSymbol;
         }
-        else if (arabicDigit >= 5 && arabicDigit <=8) { 
+        else if (arabicDigit >= 5 && arabicDigit <=8) {
             numeral += fiveSymbol;
             while(arabicDigit > 5) {
                 arabicDigit-- ;
                 numeral += oneSymbol;
             }
-        }  	   
-        else if (arabicDigit == 9 ) { 
+        }      
+        else if (arabicDigit == 9 ) {
             numeral += oneSymbol;
             numeral += tenSymbol;
 
@@ -156,21 +210,78 @@ public class Roman extends HttpServlet {
             ;
         }
     }
+
+    private String computeRomanDigitNew(int arabicDigit, char oneSymbol, char fiveSymbol, char tenSymbol){
+
+        String numeral = "";
+
+        if(arabicDigit >= 1 && arabicDigit <=3 ) {
+            while(arabicDigit > 0) {
+                arabicDigit-- ;
+                numeral += oneSymbol;
+            }
+        }
+        else if (arabicDigit == 4) {
+                numeral += oneSymbol;
+                numeral += fiveSymbol;
+        }
+        else if (arabicDigit >= 5 && arabicDigit <=8) {
+            numeral += fiveSymbol;
+            while(arabicDigit > 5) {
+                arabicDigit-- ;
+                numeral += oneSymbol;
+            }
+        }
+        else if (arabicDigit == 9 ) {
+            numeral += oneSymbol;
+            numeral += tenSymbol;
+
+        }
+        else if (arabicDigit == 0) {
+            // do nothing
+            ;
+        }
+       setNumeral(numeral);
+       return(numeral);
+    }
+
+    private String computeRomanDigitNew2(int arabicDigit, char oneSymbol, char fiveSymbol, char tenSymbol){
+        
+        StringBuilder numeral= new StringBuilder("");
+
+        if(arabicDigit >= 1 && arabicDigit <=3 ) {
+            while(arabicDigit > 0) {
+                arabicDigit-- ;
+                numeral.append(String.valueOf(oneSymbol));
+            }
+        } 
+        else if (arabicDigit == 4) {
+                numeral.append(String.valueOf(oneSymbol));
+                numeral.append(String.valueOf(fiveSymbol));
+        }
+        else if (arabicDigit >= 5 && arabicDigit <=8) { 
+            numeral.append(String.valueOf(fiveSymbol));
+            while(arabicDigit > 5) {
+                arabicDigit-- ;
+                numeral.append(String.valueOf(oneSymbol));
+            }
+        }  	   
+        else if (arabicDigit == 9 ) { 
+            numeral.append(String.valueOf(oneSymbol));
+            numeral.append(String.valueOf(tenSymbol));
+
+        }
+        else if (arabicDigit == 0) {
+            // do nothing
+            ;
+        }
+        System.out.println("computeRomanDigit for: " + arabicDigit + numeral.toString());
+        return(numeral.toString());
+    }
    // -----------------------
    // -----------------------
    // ReverseRoman from this point on
 
-    private int getArabicNumber() {
-        return this.arabicNumber;
-    }
-
-    private void setArabicNumber(int i) {
-        this.arabicNumber = i;
-    }
-    private void setErrorMsg(String errorMsg) {
-        this.errorMsg.setLength(0);
-        this.errorMsg.append(errorMsg);
-    }
 
     public int getArabic(String roman) {
 
@@ -223,15 +334,14 @@ public class Roman extends HttpServlet {
     }
 
     private boolean repeatOfFives(String roman) {
-        if (roman.indexOf('V', roman.indexOf("V")) != -1) {
-            return true;
-        }
-        if (roman.indexOf('L', roman.indexOf("L")) != -1) {
-            return true;
-        }
-        if (roman.indexOf('D', roman.indexOf("D")) != -1) {
-            return true;
-        }
+        char[] fiveLetterArray = {'V', 'L', 'D'};
+        for (char ch: fiveLetterArray) {
+            int first_occurance = roman.indexOf(ch);
+            // is there a second occurance?:
+            if (roman.indexOf(ch, first_occurance+1) != -1) {
+                return true;
+            }
+       }
         return false;
     } 
 
@@ -281,7 +391,7 @@ public class Roman extends HttpServlet {
             }
             else if (i == inputList.size()) {
             // subtraction operation - already accounts for last two elements
-            break;
+               break;
             }
 
             int valueAtIAnd1 = inputList.get(i+1).getValue();
@@ -294,18 +404,20 @@ public class Roman extends HttpServlet {
             else if (valueAtI < valueAtIAnd1) {
                 // subtractive?
                 if(typeAtI == 5) { // Five-types may not participate in subtraction
-                    arabicResult.setErrorMsg("Invalid Roman Value");
+                    arabicResult.setErrorMsg("Invalid Roman Value: Five-type letters may not be subtracted");
                     arabicResult.setComputedNumber(5000);
                     return arabicResult;
                 }
                 else if ((valueAtIAnd1 == 5 * valueAtI) || (valueAtIAnd1 == 10 * valueAtI)) {
-                     int subtractive_value = valueAtIAnd1 - valueAtI;
-                     int previous_value = inputList.get(i-1).getValue();
-                     if (subtractive_value > previous_value) {
-                         arabicResult.setErrorMsg("Invalid Roman Value");
-                         arabicResult.setComputedNumber(5000);
-                         return arabicResult;
-                     } 
+                     if(i >=1){
+                         int subtractive_value = valueAtIAnd1 - valueAtI;
+                         int previous_value = inputList.get(i-1).getValue();
+                         if (subtractive_value > previous_value) {
+                             arabicResult.setErrorMsg("Invalid Roman Value: double subtraction");
+                             arabicResult.setComputedNumber(5000);
+                             return arabicResult;
+                         } 
+                     }
                      inputValues.add(valueAtIAnd1 - valueAtI);
                      i++;  // advance the iterator since we have handled two places.
                      continue;
@@ -341,6 +453,7 @@ public class Roman extends HttpServlet {
 
         Roman roman = new Roman();
         System.out.println("Arabic of III = " + roman.getArabic("III"));
+
     }
 }    
 
