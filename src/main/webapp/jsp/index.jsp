@@ -61,7 +61,7 @@
 
     </br>
     <div id="errormsgid">
-       <input type="text" name="errormsg" disabled="disabled" value="<%= request.getAttribute("errormsg") %>" > 
+       <input type="text" name="errormsg" disabled="disabled" value="<%= request.getAttribute("errormsg") == null ?' ' : request.getAttribute("errormsg") %>" > 
     </div>
 
     </form>
