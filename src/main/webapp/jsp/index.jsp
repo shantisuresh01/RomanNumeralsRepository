@@ -5,7 +5,8 @@
     <script type="text/javascript">
 
     $(document).ready(function(){
-     $("#msgid").html("Roman Numeral Converter");
+     $("#msgid1").html("Roman Numeral and");
+     $("#msgid2").html("Reverse Roman Converter");
      $("#rangeid").html("For Numbers enter range 1 - 3999 ");
     });
 
@@ -16,7 +17,7 @@
             if (document.getElementById("number").checkValidity() == false) {
                txt = "Value too large";
             }
-            $("#error_msg").html = txt;
+            $("#errormsg").html = txt;
         }
 
        function clearAndSubmitForm()
@@ -31,7 +32,9 @@
 
     <form name="roman_form" id="roman_form" action="${pageContext.request.contextPath}/romanengine" method="post" > 
 
-    <div id="msgid" class=largefont>
+    <div id="msgid1" class=largefont>
+    </div>
+    <div id="msgid2" class=largefont>
     </div>
     <div id="rangeid" class=largefont>
     </div>
@@ -47,7 +50,7 @@
         <tr>
             <td>
                     <label for="result">Result:    </label>
-                    <input type="text" name="result" disabled="disabled" value=<%= request.getAttribute("result") %> id="result" \>
+                    <input type="text" name="result" id="result" disabled="disabled" value="<%= request.getAttribute("result") %>" >
             </td>
         </tr>
     </table>
@@ -56,7 +59,10 @@
         <button id="roman_button_id" type="button" onclick="clearAndSubmitForm()">Convert</button>
     </div>
 
-    <p id="error_msg" value="${param.error_msg}" ></p>
+    </br>
+    <div id="errormsgid">
+       <input type="text" name="errormsg" disabled="disabled" value="<%= request.getAttribute("errormsg") %>" > 
+    </div>
 
     </form>
 

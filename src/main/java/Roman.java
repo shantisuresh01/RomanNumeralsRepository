@@ -109,7 +109,8 @@ public class Roman extends HttpServlet {
             // populate response attributes so that JSP can use these values to create the response
             request.setAttribute("question", input_question);
             request.setAttribute("result", output_result);
-            request.setAttribute("error_msg", getErrorMsg());
+            request.setAttribute("errormsg", this.getErrorMsg());
+            System.out.println("Error Message:" + this.getErrorMsg());
             RequestDispatcher rd = request.getRequestDispatcher("/jsp/index.jsp");
             rd.forward(request, response);
 
@@ -133,6 +134,7 @@ public class Roman extends HttpServlet {
         // Find the number of digits in the arabic number:
         if (arabic <= 0 || arabic >= 4000) {
             numeral = "Oops!";
+            this.setErrorMsg("Error: Number out of range: 1 - 3999");
             return(numeral);
          }
         int numOfDigits = (int)(Math.log10(arabic) + 1);
@@ -147,6 +149,7 @@ public class Roman extends HttpServlet {
             int tenIndex = fiveIndex + 1;
             int oneIndex = fiveIndex - 1;
             computeRomanDigit(arabicDigit, this.romanSymbols[oneIndex],this.romanSymbols[fiveIndex], this.romanSymbols[tenIndex]);
+            this.setErrorMsg("");
         }
         return(numeral);
 
@@ -159,8 +162,8 @@ public class Roman extends HttpServlet {
 
         // Find the number of digits in the arabic number:
         if (arabic <= 0 || arabic >= 4000) {
-            setNumeral("Oops!");
-            setErrorMsg("Error: Integer out or range");
+            this.setNumeral("Oops!");
+            this.setErrorMsg("Error: Integer out or range");
          }
          else {
             int numOfDigits = (int)(Math.log10(arabic) + 1);
@@ -176,7 +179,6 @@ public class Roman extends HttpServlet {
                 int tenIndex = fiveIndex + 1;
                 int oneIndex = fiveIndex - 1;
                 computeRomanDigit(arabicDigit, this.romanSymbols[oneIndex],this.romanSymbols[fiveIndex], this.romanSymbols[tenIndex]);
-                setErrorMsg("");
             }
         }
         return(getNumeral());
@@ -275,7 +277,6 @@ public class Roman extends HttpServlet {
             // do nothing
             ;
         }
-        System.out.println("computeRomanDigit for: " + arabicDigit + numeral.toString());
         return(numeral.toString());
     }
    // -----------------------

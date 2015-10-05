@@ -1,10 +1,14 @@
 .largefont {
   color: #0066FF;
   font-family:arial;
-  font-size: 30px;
+  font-size: 24px;
 } 
 
-#msgid{
+#msgid1{
+/*    text-align: center; */
+    color: green;
+}
+#msgid2{
 /*    text-align: center; */
     color: green;
 }
@@ -43,6 +47,10 @@ input, textarea {
     border: 1px solid #999;
 }
 
-#error_msg{
-    outline:0;
+#errormsgid input {
+    size: 100;
+    outline:none;
+    border: 0px;
+    background:transparent;
+    width:500px;
 }
