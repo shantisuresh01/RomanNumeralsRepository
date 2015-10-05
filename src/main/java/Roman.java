@@ -290,19 +290,19 @@ public class Roman extends HttpServlet {
 
         if (!containsRomanCharacters(roman)) {
             setErrorMsg("Error: Letters are not Roman Numerals");
-            setArabicNumber(5000);
+            setArabicNumber(0);
         }
         else if(fourLetterRepeatOfOnes(roman)) {
             setErrorMsg("Error: 'One' letters cannot be repeated four times");
-            setArabicNumber(5000);
+            setArabicNumber(0);
         }
         else if(repeatOfFives(roman)) {
             setErrorMsg("Error: 'Five' letters cannot occur more than once ");
-            setArabicNumber(5000);
+            setArabicNumber(0);
         }
         else if(incorrectSubtractivePattern(roman)) {
             setErrorMsg("Error: One symbols may be subtracted only from next two higher symbols");
-            setArabicNumber(5000);
+            setArabicNumber(0);
         }
         else {
             arabicResult = computeArabicNumber(roman);
@@ -315,7 +315,7 @@ public class Roman extends HttpServlet {
 
     private boolean containsRomanCharacters(String roman) {
         // test if characters are Roman numeral characters
-        return (roman == null) ? false : roman.matches("[IVXLCM]*");
+        return (roman == null) ? false : roman.matches("[IVXLCDM]*");
     }
     private boolean fourLetterRepeatOfOnes(String roman) {
         // Ensure that Roman Letters are not repeated four times.
@@ -406,7 +406,7 @@ public class Roman extends HttpServlet {
                 // subtractive?
                 if(typeAtI == 5) { // Five-types may not participate in subtraction
                     arabicResult.setErrorMsg("Invalid Roman Value: Five-type letters may not be subtracted");
-                    arabicResult.setComputedNumber(5000);
+                    arabicResult.setComputedNumber(0);
                     return arabicResult;
                 }
                 else if ((valueAtIAnd1 == 5 * valueAtI) || (valueAtIAnd1 == 10 * valueAtI)) {
@@ -415,7 +415,7 @@ public class Roman extends HttpServlet {
                          int previous_value = inputList.get(i-1).getValue();
                          if (subtractive_value > previous_value) {
                              arabicResult.setErrorMsg("Invalid Roman Value: double subtraction");
-                             arabicResult.setComputedNumber(5000);
+                             arabicResult.setComputedNumber(0);
                              return arabicResult;
                          } 
                      }
@@ -425,7 +425,7 @@ public class Roman extends HttpServlet {
                  } 
                  else {
                     arabicResult.setErrorMsg("Invalid Roman Value");
-                    arabicResult.setComputedNumber(5000);
+                    arabicResult.setComputedNumber(0);
                     return arabicResult;
                  }
             }
