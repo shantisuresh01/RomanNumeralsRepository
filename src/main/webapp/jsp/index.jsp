@@ -50,7 +50,7 @@
         <tr>
             <td>
                     <label for="result">Result:    </label>
-                    <input type="text" name="result" id="result" disabled="disabled" value="${empty param.result ? ' ' : param.result}" >
+                    <input type="text" name="result" id="result" disabled="disabled" value="<%= request.getAttribute("result") == null ?' ' : request.getAttribute("result") %>" >
             </td>
         </tr>
     </table>
