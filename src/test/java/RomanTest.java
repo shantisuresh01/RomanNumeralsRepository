@@ -86,9 +86,9 @@ public class RomanTest {
         assertEquals("LV", roman.getRoman(55));
     }
     @Test
-    public void getArabicOfIIIIShouldBe5000(){
+    public void getArabicOfIIIIShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("IIII"));
+        assertEquals(0, roman.getArabic("IIII"));
     }
     @Test
     public void getArabicOfIIIShouldBe3(){
@@ -96,50 +96,50 @@ public class RomanTest {
         assertEquals(3, roman.getArabic("III"));
     }
     @Test
-    public void getArabicOfXXXXShouldBe5000(){
+    public void getArabicOfXXXXShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("XXXX"));
+        assertEquals(0, roman.getArabic("XXXX"));
     }
     @Test
-    public void getArabicOfCCCCShouldBe5000(){
+    public void getArabicOfCCCCShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("CCCC"));
+        assertEquals(0, roman.getArabic("CCCC"));
     }
     @Test
-    public void getArabicOfMMMMShouldBe5000(){
+    public void getArabicOfMMMMShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("MMMM"));
+        assertEquals(0, roman.getArabic("MMMM"));
     }
     // 'Five' letters cannot occur more than once
     @Test
-    public void getArabicOfVVShouldBe5000(){
+    public void getArabicOfVVShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("VV"));
+        assertEquals(0, roman.getArabic("VV"));
     }
     @Test
-    public void getArabicOfLLShouldBe5000(){
+    public void getArabicOfLLShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("LL"));
+        assertEquals(0, roman.getArabic("LL"));
     }
     @Test
-    public void getArabicOfDDShouldBe5000(){
+    public void getArabicOfDDShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("DD"));
+        assertEquals(0, roman.getArabic("DD"));
     }
     @Test
-    public void getArabicOfVIVShouldBe5000(){
+    public void getArabicOfVIVShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("VIV"));
+        assertEquals(0, roman.getArabic("VIV"));
     }
     @Test
-    public void getArabicOfMDCDShouldBe5000(){
+    public void getArabicOfMDCDShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("MDCD"));
+        assertEquals(0, roman.getArabic("MDCD"));
     }
     @Test
-    public void getArabicOfnonRomanShouldBe5000(){
+    public void getArabicOfnonRomanShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("A"));
+        assertEquals(0, roman.getArabic("A"));
     }
 
     // The '1' symbols ('I', 'X', and 'C') can only be subtracted from the 
@@ -147,57 +147,57 @@ public class RomanTest {
     // Not allowed: IL, IC, ID, XD, XM
 
     @Test
-    public void getArabicOfILShouldBe5000(){
+    public void getArabicOfILShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("IL"));
+        assertEquals(0, roman.getArabic("IL"));
     }
     @Test
-    public void getArabicOfXDShouldBe5000(){
+    public void getArabicOfXDShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("XD"));
+        assertEquals(0, roman.getArabic("XD"));
     }
 
     // Only one subtraction may be made per numeral
     // Not allowed: IIV, IIX, XXC, XXL, VIX, LXC, DCM
     @Test
-    public void getArabicOfIIVShouldBe5000(){
+    public void getArabicOfIIVShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("IIV"));
+        assertEquals(0, roman.getArabic("IIV"));
     }
     @Test
-    public void getArabicOfIIXShouldBe5000(){
+    public void getArabicOfIIXShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("IIX"));
+        assertEquals(0, roman.getArabic("IIX"));
     }
     @Test
-    public void getArabicOfXXCShouldBe5000(){
+    public void getArabicOfXXCShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("XXC"));
+        assertEquals(0, roman.getArabic("XXC"));
     }
     @Test
-    public void getArabicOfXXLShouldBe5000(){
+    public void getArabicOfXXLShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("XXL"));
+        assertEquals(0, roman.getArabic("XXL"));
     }
     @Test
-    public void getArabicOfVIXShouldBe5000(){
+    public void getArabicOfVIXShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("VIX"));
+        assertEquals(0, roman.getArabic("VIX"));
     }
     @Test
-    public void getArabicOfLXCShouldBe5000(){
+    public void getArabicOfLXCShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("LXC"));
+        assertEquals(0, roman.getArabic("LXC"));
     }
     @Test
-    public void getArabicOfDCMShouldBe5000(){
+    public void getArabicOfDCMShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("DCM"));
+        assertEquals(0, roman.getArabic("DCM"));
     }
     @Test
-    public void getArabicOfAAAShouldBe5000(){
+    public void getArabicOfAAAShouldBe0(){
         roman = new Roman();
-        assertEquals(5000, roman.getArabic("AAA"));
+        assertEquals(0, roman.getArabic("AAA"));
     }
     @Test
     public void getArabicOfVShouldBe5(){
